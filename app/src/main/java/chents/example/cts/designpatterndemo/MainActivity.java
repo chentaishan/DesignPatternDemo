@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import chents.example.cts.designpatterndemo.factory.Shape;
+import chents.example.cts.designpatterndemo.factory.ShapeFactory;
 import chents.example.cts.designpatterndemo.instance.SingleTon1;
 import chents.example.cts.designpatterndemo.instance.SingleTon2;
 import chents.example.cts.designpatterndemo.instance.SingleTon3;
@@ -33,6 +35,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
+        testFactory();
+
+    }
+
+    private void testFactory() {
+
+        Shape shape = ShapeFactory.getShape(ShapeFactory.CIRCLE);
 
 
     }

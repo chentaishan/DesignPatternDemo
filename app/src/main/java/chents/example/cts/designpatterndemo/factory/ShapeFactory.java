@@ -5,8 +5,8 @@ package chents.example.cts.designpatterndemo.factory;
  */
 public class ShapeFactory {
 
-    private  static final String CIRCLE ="CIRCLE";
-    private  static final String RECTANGLE ="RECTANGLE";
+    public   static final String CIRCLE ="CIRCLE";
+    public  static final String RECTANGLE ="RECTANGLE";
 
     public static Shape getShape(String type ){
         if (type.equals(CIRCLE)){
