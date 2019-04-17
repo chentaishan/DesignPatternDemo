@@ -2,10 +2,13 @@ package chents.example.cts.designpatterndemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import chents.example.cts.designpatterndemo.builder.Director;
+import chents.example.cts.designpatterndemo.builder.MacBookBuilder;
 import chents.example.cts.designpatterndemo.factory.Shape;
 import chents.example.cts.designpatterndemo.factory.ShapeFactory;
 import chents.example.cts.designpatterndemo.instance.SingleTon1;
@@ -14,9 +17,12 @@ import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
 import chents.example.cts.designpatterndemo.instance.oberser.MyOberser;
 import chents.example.cts.designpatterndemo.instance.oberser.WeatherData;
+import chents.example.cts.designpatterndemo.template.Cricket;
+import chents.example.cts.designpatterndemo.template.Game;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "MainActivity";
     /**
      * single_click
      */
@@ -29,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * Hello World!
      */
     private TextView mResult;
+    /**
+     * builder_click
+     */
+    private Button mBuilderClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +46,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
 
-        testFactory();
 
+    }
+
+    private void testBuilder() {
+
+        MacBookBuilder macBookBuilder = new MacBookBuilder();
+
+        Director director = new Director(macBookBuilder);
+
+        director.construct("华为主板", "显卡");
+
+        Log.d(TAG, "testBuilder: "+macBookBuilder.create().toString());
+    }
+
+    private void testTemplate() {
+
+        Game game = new Cricket();
+
+        game.play();
     }
 
     private void testFactory() {
@@ -84,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mObserverClick = (Button) findViewById(R.id.observer_click);
         mObserverClick.setOnClickListener(this);
         mResult = (TextView) findViewById(R.id.result);
+        mBuilderClick = (Button) findViewById(R.id.builder_click);
+        mBuilderClick.setOnClickListener(this);
+        mResult.setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +126,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.observer_click:
                 testObserver();
+                break;
+            case R.id.builder_click:
+
+                testBuilder();
+                break;
+            case R.id.result:
                 break;
         }
     }
