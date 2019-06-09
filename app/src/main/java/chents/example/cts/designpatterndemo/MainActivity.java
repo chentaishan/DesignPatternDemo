@@ -16,7 +16,7 @@ import chents.example.cts.designpatterndemo.instance.SingleTon2;
 import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
 import chents.example.cts.designpatterndemo.instance.oberser.MyOberser;
-import chents.example.cts.designpatterndemo.instance.oberser.WeatherData;
+import chents.example.cts.designpatterndemo.instance.oberser.Cuihua;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 
@@ -79,17 +79,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void testObserver() {
 
-        WeatherData weatherData = new WeatherData();
+        Cuihua cuihua = new Cuihua();
 
-        MyOberser myOberser = new MyOberser(weatherData);
-        MyOberser myOberser1 = new MyOberser(weatherData);
+        MyOberser myOberser = new MyOberser( );
+        MyOberser myOberser1 = new MyOberser( );
 
-        weatherData.addObserver(myOberser);
-        weatherData.addObserver(myOberser1);
+        cuihua.addObserver(myOberser);
+        cuihua.addObserver(myOberser1);
 
-        weatherData.setPressure(22);
-        weatherData.setTemperature(44);
-        weatherData.update();
+
+        cuihua.createEvent("I am married!");
     }
 
     /**

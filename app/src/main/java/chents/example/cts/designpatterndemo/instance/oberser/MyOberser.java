@@ -7,22 +7,14 @@ import java.util.Observer;
 
 public class MyOberser implements Observer {
 
-    public MyOberser(Observable observable) {
-
-//        observable.addObserver(this);
-    }
 
     private static final String TAG = "MyOberser";
     @Override
     public void update(Observable o, Object arg) {
-        if (o instanceof WeatherData){
-            WeatherData weatherData =   ((WeatherData) o);
+        if (o instanceof Cuihua){
+            Cuihua cuihua =   ((Cuihua) o);
 
-            int pressure = weatherData.getPressure();
-            int temperature = weatherData.getTemperature();
-
-
-            Log.d(TAG, this+"=:pressure= "+pressure+"---temperature="+temperature);
+            Log.d(TAG, "--"+cuihua.getTask());
 
         }
     }
