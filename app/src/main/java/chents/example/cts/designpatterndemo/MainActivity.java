@@ -9,8 +9,11 @@ import android.widget.TextView;
 
 import chents.example.cts.designpatterndemo.builder.Director;
 import chents.example.cts.designpatterndemo.builder.MacBookBuilder;
-import chents.example.cts.designpatterndemo.factory.Shape;
 import chents.example.cts.designpatterndemo.factory.ShapeFactory;
+import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
+import chents.example.cts.designpatterndemo.factroy2.Contant;
+import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
+import chents.example.cts.designpatterndemo.factroy2.Shape;
 import chents.example.cts.designpatterndemo.instance.SingleTon1;
 import chents.example.cts.designpatterndemo.instance.SingleTon2;
 import chents.example.cts.designpatterndemo.instance.SingleTon3;
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * builder_click
      */
     private Button mBuilderClick;
+    private Button mFactoryClickAbstact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         director.construct("华为主板", "显卡");
 
-        Log.d(TAG, "testBuilder: "+macBookBuilder.create().toString());
+        Log.d(TAG, "testBuilder: " + macBookBuilder.create().toString());
     }
 
     private void testTemplate() {
@@ -67,12 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         game.play();
     }
 
-    private void testFactory() {
 
-        Shape shape = ShapeFactory.getShape(ShapeFactory.CIRCLE);
-
-
-    }
 
     /**
      * 观察者模式
@@ -81,8 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Cuihua cuihua = new Cuihua();
 
-        SingleMan myOberser = new SingleMan( );
-        SingleMan myOberser1 = new SingleMan( );
+        SingleMan myOberser = new SingleMan();
+        SingleMan myOberser1 = new SingleMan();
 
         cuihua.addObserver(myOberser);
         cuihua.addObserver(myOberser1);
@@ -113,11 +112,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBuilderClick = (Button) findViewById(R.id.builder_click);
         mBuilderClick.setOnClickListener(this);
         mResult.setOnClickListener(this);
+        mFactoryClickAbstact = (Button) findViewById(R.id.abstact_factory_click);
+        mFactoryClickAbstact.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.abstact_factory_click:// TODO 19/06/09
+
+
+                final AbstractFactory factory = FactoryProducer.getFactory(Contant.SHAPE);
+
+                final Shape shape = factory.getShape(Contant.CIRCLE);
+
+                shape.onDraw();
+
+                break;
             default:
                 break;
             case R.id.single_click:
