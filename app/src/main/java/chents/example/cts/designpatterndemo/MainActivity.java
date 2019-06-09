@@ -15,8 +15,8 @@ import chents.example.cts.designpatterndemo.instance.SingleTon1;
 import chents.example.cts.designpatterndemo.instance.SingleTon2;
 import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
-import chents.example.cts.designpatterndemo.instance.oberser.MyOberser;
 import chents.example.cts.designpatterndemo.instance.oberser.Cuihua;
+import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Cuihua cuihua = new Cuihua();
 
-        MyOberser myOberser = new MyOberser( );
-        MyOberser myOberser1 = new MyOberser( );
+        SingleMan myOberser = new SingleMan( );
+        SingleMan myOberser1 = new SingleMan( );
 
         cuihua.addObserver(myOberser);
         cuihua.addObserver(myOberser1);
