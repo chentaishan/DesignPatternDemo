@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.Director;
-import chents.example.cts.designpatterndemo.builder.MacBookBuilder;
-import chents.example.cts.designpatterndemo.factory.ShapeFactory;
+import chents.example.cts.designpatterndemo.builder.MacBook;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
 import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
@@ -55,13 +55,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void testBuilder() {
 
-        MacBookBuilder macBookBuilder = new MacBookBuilder();
 
-        Director director = new Director(macBookBuilder);
 
-        director.construct("华为主板", "显卡");
+         Computer macBookBuilder = new MacBook.MacBookBuilder()
+                .buildBoard("huawei")
+                 .buildDisplay("xxx")
+                 .buildOS()
+                 .create();
 
-        Log.d(TAG, "testBuilder: " + macBookBuilder.create().toString());
+
+
+
+
+//
+        Log.d(TAG, "testBuilder: " + macBookBuilder.toString());
     }
 
     private void testTemplate() {
