@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import chents.example.cts.designpatterndemo.builder.Computer;
-import chents.example.cts.designpatterndemo.builder.Director;
 import chents.example.cts.designpatterndemo.builder.MacBook;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
@@ -56,15 +55,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void testBuilder() {
 
 
-
-         Computer macBookBuilder = new MacBook.MacBookBuilder()
+        Computer macBookBuilder = new MacBook.MacBookBuilder()
                 .buildBoard("huawei")
-                 .buildDisplay("xxx")
-                 .buildOS()
-                 .create();
-
-
-
+                .buildDisplay("xxx")
+//                .buildOS()
+                .create();
 
 
 //
@@ -77,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         game.play();
     }
-
 
 
     /**
