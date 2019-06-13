@@ -8,18 +8,11 @@ public abstract class Computer {
 
     public abstract void setmOS();
 
+    public  abstract void setBoard(String board);
 
-    public void setBoard(String board) {
-        this.board = board;
-    }
+    public  abstract void setmDisplay(String display);
 
-    public void setmDisplay(String mDisplay) {
-        this.mDisplay = mDisplay;
-    }
 
-    public void setmOs(String mOs) {
-        this.mOs = mOs;
-    }
 
 
 

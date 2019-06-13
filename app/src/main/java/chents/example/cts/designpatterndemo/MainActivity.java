@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
+import chents.example.cts.designpatterndemo.builder.Window;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
 import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
@@ -57,13 +58,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Computer macBookBuilder = new MacBook.MacBookBuilder()
                 .buildBoard("huawei")
-                .buildDisplay("xxx")
-//                .buildOS()
+                .buildDisplay("lenovo")
+
                 .create();
+
+        Computer build = new Window.Builder()
+                .setBoard("华硕")
+                .setDisplay("京东方")
+                .build();
 
 
 //
-        Log.d(TAG, "testBuilder: " + macBookBuilder.toString());
+        Log.d(TAG, "testBuilder: 1=" + macBookBuilder.toString());
+        Log.d(TAG, "testBuilder: 2=" + build.toString());
     }
 
     private void testTemplate() {

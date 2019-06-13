@@ -4,12 +4,6 @@ public class MacBook extends Computer {
 
 
 
-
-    @Override
-    public void setmOS() {
-        mOs = "mac OS 10.1";
-    }
-
     @Override
     public String toString() {
         return "MacBook{" +
@@ -17,6 +11,24 @@ public class MacBook extends Computer {
                 ", display='" + mDisplay + '\'' +
                 ", os='" + mOs + '\'' +
                 '}';
+    }
+
+    @Override
+    public void setmOS() {
+
+        mOs ="os";
+
+    }
+
+    @Override
+    public void setBoard(String board) {
+
+        this.board = board;
+    }
+
+    @Override
+    public void setmDisplay(String display) {
+        this.mDisplay = display;
     }
 
     public static class MacBookBuilder  {
@@ -35,12 +47,6 @@ public class MacBook extends Computer {
         public MacBookBuilder buildDisplay(String display) {
 
             macBook.setmDisplay(display);
-            return this;
-        }
-
-
-        public MacBookBuilder buildOS() {
-            macBook.setmOS();
             return this;
         }
 
