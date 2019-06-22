@@ -51,7 +51,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
 
 
+
     }
+
+    /**
+     * 单例模式
+     */
+    private void testSingleTon() {
+
+        SingleTon1.getInstance().doSomething();
+        SingleTon2.getInstance();
+        SingleTon3.getInstance();
+        SingleTon4.getInstance();
+
+    }
+
 
     private void testBuilder() {
 
@@ -97,18 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cuihua.createEvent("I am married!");
     }
 
-    /**
-     * 单例模式
-     */
 
-    private void testSingleTon() {
-
-        SingleTon1.getInstance();
-        SingleTon2.getInstance();
-        SingleTon3.getInstance();
-        SingleTon4.getInstance();
-
-    }
 
     private void initView() {
         mSingleClick = (Button) findViewById(R.id.single_click);
