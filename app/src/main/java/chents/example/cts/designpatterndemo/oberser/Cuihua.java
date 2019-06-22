@@ -1,4 +1,4 @@
-package chents.example.cts.designpatterndemo.instance.oberser;
+package chents.example.cts.designpatterndemo.oberser;
 
 
 import java.util.Observable;

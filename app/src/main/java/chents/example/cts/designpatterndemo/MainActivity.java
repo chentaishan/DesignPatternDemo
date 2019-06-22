@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import chents.example.cts.designpatterndemo.builder.Computer;
+import chents.example.cts.designpatterndemo.builder.Director;
 import chents.example.cts.designpatterndemo.builder.MacBook;
-import chents.example.cts.designpatterndemo.factory.ShapeFactory;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
 import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
@@ -18,7 +18,6 @@ import chents.example.cts.designpatterndemo.instance.SingleTon1;
 import chents.example.cts.designpatterndemo.instance.SingleTon2;
 import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
-import chents.example.cts.designpatterndemo.instance.SingleTon5;
 import chents.example.cts.designpatterndemo.instance.oberser.Cuihua;
 import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
 import chents.example.cts.designpatterndemo.template.Cricket;
@@ -44,14 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private Button mBuilderClick;
     private Button mFactoryClickAbstact;
-    /**
-     * abstact_factory_click
-     */
-    private Button mFactoryClick;
-    /**
-     * abstact_factory_click
-     */
-    private Button mAbstactFactoryClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,28 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
 
-
-    }
-
-    /**
-     * 单例模式
-     */
-    private void testSingleTon() {
-
-        SingleTon1.getInstance().doSomething();
-        SingleTon2.getInstance().doSomething();
-        SingleTon3.getInstance().doSomething();
-        SingleTon4.getInstance().doSomething();
-
-        SingleTon5.INSTANCE.doSomeThing();
-    }
-
-
-    private void testFactory() {
-
-        chents.example.cts.designpatterndemo.factory.Shape shape = ShapeFactory.getShape(ShapeFactory.CIRCLE);
-
-        shape.onDraw();
 
     }
 
@@ -104,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+
     /**
      * 观察者模式
      */
@@ -121,6 +91,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cuihua.createEvent("I am married!");
     }
 
+    /**
+     * 单例模式
+     */
+
+    private void testSingleTon() {
+
+        SingleTon1.getInstance();
+        SingleTon2.getInstance();
+        SingleTon3.getInstance();
+        SingleTon4.getInstance();
+
+    }
 
     private void initView() {
         mSingleClick = (Button) findViewById(R.id.single_click);
@@ -133,10 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResult.setOnClickListener(this);
         mFactoryClickAbstact = (Button) findViewById(R.id.abstact_factory_click);
         mFactoryClickAbstact.setOnClickListener(this);
-        mFactoryClick = (Button) findViewById(R.id.factory_click);
-        mFactoryClick.setOnClickListener(this);
-        mAbstactFactoryClick = (Button) findViewById(R.id.abstact_factory_click);
-        mAbstactFactoryClick.setOnClickListener(this);
     }
 
     @Override
@@ -166,11 +144,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.result:
                 break;
-            case R.id.factory_click:
-
-                testFactory();
-                break;
-
         }
     }
 }
