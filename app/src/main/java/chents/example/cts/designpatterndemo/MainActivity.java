@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import chents.example.cts.designpatterndemo.builder.Computer;
-import chents.example.cts.designpatterndemo.builder.Director;
 import chents.example.cts.designpatterndemo.builder.MacBook;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
@@ -18,8 +17,8 @@ import chents.example.cts.designpatterndemo.instance.SingleTon1;
 import chents.example.cts.designpatterndemo.instance.SingleTon2;
 import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
-import chents.example.cts.designpatterndemo.instance.oberser.Cuihua;
 import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
+import chents.example.cts.designpatterndemo.oberser.Cuihua;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 

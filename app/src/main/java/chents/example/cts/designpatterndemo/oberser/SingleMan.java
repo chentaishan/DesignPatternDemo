@@ -5,6 +5,8 @@ import android.util.Log;
 import java.util.Observable;
 import java.util.Observer;
 
+import chents.example.cts.designpatterndemo.oberser.Cuihua;
+
 public class SingleMan implements Observer {
 
 

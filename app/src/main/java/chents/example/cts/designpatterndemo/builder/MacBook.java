@@ -5,17 +5,8 @@ public class MacBook extends Computer {
     String board;
     String display;
     String os;
-    public MacBook() {
-        this(new MacBookBuilder());
-    }
 
-    public MacBook(MacBookBuilder macBookBuilder) {
 
-        board = macBookBuilder.board;
-        display = macBookBuilder.display;
-        os = macBookBuilder.os;
-
-    }
 
     public MacBook(String board, String display, String os) {
         this.board = board;
@@ -39,16 +30,16 @@ public class MacBook extends Computer {
 
     public static class MacBookBuilder extends Builder {
 
-        //        private MacBook macBook = new MacBook();
-        String board;
+
+        String broad;
         String display;
         String os;
 
-        @Override
-        public Builder buildBoard(String board) {
 
-            this.board = board;
-            return this;
+        @Override
+        public Builder buildOs(String os) {
+            this.os = os;
+            return null;
         }
 
         @Override
@@ -59,15 +50,19 @@ public class MacBook extends Computer {
         }
 
         @Override
-        public Builder buildOS() {
-           this.os = "华为";
-            return this;
+        public Builder buildBroad(String broad) {
+            this.broad = broad;
+            return null;
         }
 
         @Override
-        public Computer create() {
-            return new MacBook(board,display,os);
+        public Computer build() {
+            return new MacBook(broad,display,os);
         }
+
+
+
+
     }
 
 }
