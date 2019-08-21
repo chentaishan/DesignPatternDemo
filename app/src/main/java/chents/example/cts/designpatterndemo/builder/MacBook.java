@@ -2,52 +2,67 @@ package chents.example.cts.designpatterndemo.builder;
 
 public class MacBook extends Computer {
 
+    String board;
+    String display;
+    String os;
 
 
 
-    @Override
-    public void setmOS() {
-        mOs = "mac OS 10.1";
+    public MacBook(String board, String display, String os) {
+        this.board = board;
+        this.display = display;
+        this.os = os;
     }
 
     @Override
     public String toString() {
         return "MacBook{" +
                 "board='" + board + '\'' +
-                ", display='" + mDisplay + '\'' +
-                ", os='" + mOs + '\'' +
+                ", display='" + display + '\'' +
+                ", os='" + os + '\'' +
                 '}';
     }
 
-    public static class MacBookBuilder  {
+    @Override
+    public void setmOS() {
+        mOS = "mac OS 10.1";
+    }
 
-         Computer macBook = new MacBook();
+    public static class MacBookBuilder extends Builder {
 
 
-        public MacBookBuilder buildBoard(String board) {
+        String broad;
+        String display;
+        String os;
 
 
-            macBook.setBoard(board);
+        @Override
+        public Builder buildOs(String os) {
+            this.os = os;
+            return null;
+        }
+
+        @Override
+        public Builder buildDisplay(String display) {
+
+            this.display = display;
             return this;
         }
 
+        @Override
+        public Builder buildBroad(String broad) {
+            this.broad = broad;
+            return null;
+        }
 
-        public MacBookBuilder buildDisplay(String display) {
-
-            macBook.setmDisplay(display);
-            return this;
+        @Override
+        public Computer build() {
+            return new MacBook(broad,display,os);
         }
 
 
-        public MacBookBuilder buildOS() {
-            macBook.setmOS();
-            return this;
-        }
 
 
-        public Computer create() {
-            return macBook;
-        }
     }
 
 }

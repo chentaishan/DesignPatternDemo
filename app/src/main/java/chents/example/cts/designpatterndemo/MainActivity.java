@@ -7,11 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.lang.reflect.Proxy;
-
-import chents.example.cts.designpatterndemo.DynamicProxy.Client;
-import chents.example.cts.designpatterndemo.DynamicProxy.DynamicProxyObj;
-import chents.example.cts.designpatterndemo.DynamicProxy.ILawsuit;
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
@@ -74,13 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         Computer macBookBuilder = new MacBook.MacBookBuilder()
-                .buildBoard("huawei")
+//                .buildOs("huawei")
                 .buildDisplay("xxx")
-//                .buildOS()
-                .create();
+                .buildBroad("mac OS ")
+                .build();
 
-
-//
         Log.d(TAG, "testBuilder: " + macBookBuilder.toString());
     }
 
@@ -133,10 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResult.setOnClickListener(this);
         mFactoryClickAbstact = (Button) findViewById(R.id.abstact_factory_click);
         mFactoryClickAbstact.setOnClickListener(this);
-        mClickProxy = (Button) findViewById(R.id.proxy_click);
-        mClickProxy.setOnClickListener(this);
-        mProxyClickDynamic = (Button) findViewById(R.id.dynamic_proxy_click);
-        mProxyClickDynamic.setOnClickListener(this);
     }
 
     @Override
@@ -150,24 +139,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final Shape shape = factory.getShape(Contant.CIRCLE);
 
                 shape.onDraw();
-
-                break;
-            case R.id.proxy_click:// TODO 19/08/21
-
-                testProxy();
-                break;
-            case R.id.dynamic_proxy_click:// TODO 19/08/21
-
-                final ILawsuit client = new Client();
-
-                final DynamicProxyObj proxyObj = new DynamicProxyObj ( client);
-
-                final ClassLoader classLoader = client.getClass().getClassLoader();
-
-                final ILawsuit object = (ILawsuit) Proxy.newProxyInstance(classLoader, new Class[]{ILawsuit.class}, proxyObj);
-
-                object.submit();
-
 
                 break;
             default:

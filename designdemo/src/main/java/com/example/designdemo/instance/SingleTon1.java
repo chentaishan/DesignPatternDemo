@@ -1,18 +1,17 @@
-package chents.example.cts.designpatterndemo.instance;
+package com.example.designdemo.instance;
 
 import android.util.Log;
 
 /**
  * 懒汉式
- * 当需要使用的时候再创建对象
  */
 public class SingleTon1 {
-    private SingleTon1(){}
 
     private static final String TAG = "SingleTon1";
     private static SingleTon1 singleTon1;
+    private SingleTon1(){}
 
-    public synchronized static SingleTon1 getInstance(){
+    public static synchronized SingleTon1 getInstance(){
 
         if (singleTon1==null){
 
@@ -21,7 +20,8 @@ public class SingleTon1 {
 
         return singleTon1;
     }
-    public static void doSomething(){
+
+    public void doSomething(){
 
         Log.d(TAG, "doSomething: ");
     }

@@ -1,26 +1,29 @@
 package chents.example.cts.designpatterndemo.builder;
 
 public abstract class Computer {
-
-    protected String board;
+    protected String mBoard;
     protected String mDisplay;
-    protected String mOs;
-
-    public abstract void setmOS();
+    protected String mOS;
 
 
-    public void setBoard(String board) {
-        this.board = board;
+    public void setmBoard(String mBoard) {
+        this.mBoard = mBoard;
     }
+
 
     public void setmDisplay(String mDisplay) {
         this.mDisplay = mDisplay;
     }
 
-    public void setmOs(String mOs) {
-        this.mOs = mOs;
+
+    public abstract void setmOS();
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "mBoard='" + mBoard + '\'' +
+                ", mDisplay='" + mDisplay + '\'' +
+                ", mOS='" + mOS + '\'' +
+                '}';
     }
-
-
-
 }
