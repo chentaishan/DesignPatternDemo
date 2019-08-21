@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.reflect.Proxy;
+
+import chents.example.cts.designpatterndemo.DynamicProxy.Client;
+import chents.example.cts.designpatterndemo.DynamicProxy.DynamicProxyObj;
+import chents.example.cts.designpatterndemo.DynamicProxy.ILawsuit;
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
@@ -19,6 +24,8 @@ import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
 import chents.example.cts.designpatterndemo.instance.oberser.Cuihua;
 import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
+import chents.example.cts.designpatterndemo.proxy.ProxyObj;
+import chents.example.cts.designpatterndemo.proxy.RealObj;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 
@@ -42,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private Button mBuilderClick;
     private Button mFactoryClickAbstact;
+    private Button mClickProxy;
+    private Button mProxyClickDynamic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
 
+
+    }
+
+    public void testProxy() {
+        final RealObj realObj = new RealObj();
+
+        final ProxyObj proxyObj = new ProxyObj(realObj);
+
+        proxyObj.updateItem();
 
     }
 
@@ -115,6 +133,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResult.setOnClickListener(this);
         mFactoryClickAbstact = (Button) findViewById(R.id.abstact_factory_click);
         mFactoryClickAbstact.setOnClickListener(this);
+        mClickProxy = (Button) findViewById(R.id.proxy_click);
+        mClickProxy.setOnClickListener(this);
+        mProxyClickDynamic = (Button) findViewById(R.id.dynamic_proxy_click);
+        mProxyClickDynamic.setOnClickListener(this);
     }
 
     @Override
@@ -128,6 +150,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final Shape shape = factory.getShape(Contant.CIRCLE);
 
                 shape.onDraw();
+
+                break;
+            case R.id.proxy_click:// TODO 19/08/21
+
+                testProxy();
+                break;
+            case R.id.dynamic_proxy_click:// TODO 19/08/21
+
+                final ILawsuit client = new Client();
+
+                final DynamicProxyObj proxyObj = new DynamicProxyObj ( client);
+
+                final ClassLoader classLoader = client.getClass().getClassLoader();
+
+                final ILawsuit object = (ILawsuit) Proxy.newProxyInstance(classLoader, new Class[]{ILawsuit.class}, proxyObj);
+
+                object.submit();
+
 
                 break;
             default:
