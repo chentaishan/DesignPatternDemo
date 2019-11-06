@@ -19,6 +19,8 @@ import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
 import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
 import chents.example.cts.designpatterndemo.oberser.Cuihua;
+import chents.example.cts.designpatterndemo.proxy.ProxyObj;
+import chents.example.cts.designpatterndemo.proxy.RealObj;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private Button mBuilderClick;
     private Button mFactoryClickAbstact;
+    private Button mClickProxy;
+    private Button mProxyClickDynamic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +56,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    public void testProxy() {
+        final RealObj realObj = new RealObj();
+
+        final ProxyObj proxyObj = new ProxyObj(realObj);
+
+        proxyObj.updateItem();
+
+    }
+
     private void testBuilder() {
 
 
         Computer macBookBuilder = new MacBook.MacBookBuilder()
-                .buildOs("huawei")
+//                .buildOs("huawei")
                 .buildDisplay("xxx")
                 .buildBroad("mac OS ")
                 .build();
@@ -70,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         game.play();
     }
-
 
 
     /**
