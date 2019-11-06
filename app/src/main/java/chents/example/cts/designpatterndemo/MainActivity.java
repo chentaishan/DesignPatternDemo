@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import chents.example.cts.designpatterndemo.adapter.SDcardImpl;
+import chents.example.cts.designpatterndemo.adapter.ThinkpadComputer;
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         Computer macBookBuilder = new MacBook.MacBookBuilder()
-//                .buildOs("huawei")
+                .buildOs("huawei")
                 .buildDisplay("xxx")
                 .buildBroad("mac OS ")
                 .build();
@@ -82,6 +84,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Game game = new Cricket();
 
         game.play();
+    }
+
+
+    public void adapter(){
+        ThinkpadComputer thinkpadComputer = new ThinkpadComputer();
+        SDcardImpl sDcard = new SDcardImpl();
+        thinkpadComputer.readSd(sDcard);
+
     }
 
 
