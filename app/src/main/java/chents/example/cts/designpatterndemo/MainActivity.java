@@ -11,6 +11,8 @@ import chents.example.cts.designpatterndemo.adapter.SDcardImpl;
 import chents.example.cts.designpatterndemo.adapter.ThinkpadComputer;
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
+import chents.example.cts.designpatterndemo.decorator.Circle;
+import chents.example.cts.designpatterndemo.decorator.RedShapeDecorator;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
 import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
@@ -23,6 +25,10 @@ import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
 import chents.example.cts.designpatterndemo.oberser.Cuihua;
 import chents.example.cts.designpatterndemo.proxy.ProxyObj;
 import chents.example.cts.designpatterndemo.proxy.RealObj;
+import chents.example.cts.designpatterndemo.responsibility.AndroidEr;
+import chents.example.cts.designpatterndemo.responsibility.Boss;
+import chents.example.cts.designpatterndemo.responsibility.Leader;
+import chents.example.cts.designpatterndemo.responsibility.Manager;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 
@@ -48,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mFactoryClickAbstact;
     private Button mClickProxy;
     private Button mProxyClickDynamic;
+    private Button mClickFactory;
+    private Button mClickDecorator;
+    private Button mClickResponsibility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
 
 
+    }
+
+    public void testResponsibility() {
+
+        AndroidEr androidEr = new AndroidEr((int) (Math.random() * 10000));
+
+        Leader leader = new Leader();
+        Manager manager = new Manager();
+        Boss boss = new Boss();
+
+        leader.setLeader(manager);
+        manager.setLeader(boss);
+
+        leader.handleRequest(androidEr);
     }
 
     public void testProxy() {
@@ -86,8 +109,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         game.play();
     }
 
+    public void decorator() {
 
-    public void adapter(){
+        Circle circle = new Circle();
+        RedShapeDecorator redShapeDecorator = new RedShapeDecorator(circle);
+        redShapeDecorator.draw();
+
+
+    }
+
+
+    public void adapter() {
         ThinkpadComputer thinkpadComputer = new ThinkpadComputer();
         SDcardImpl sDcard = new SDcardImpl();
         thinkpadComputer.readSd(sDcard);
@@ -136,6 +168,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResult.setOnClickListener(this);
         mFactoryClickAbstact = (Button) findViewById(R.id.abstact_factory_click);
         mFactoryClickAbstact.setOnClickListener(this);
+        mClickFactory = (Button) findViewById(R.id.factory_click);
+        mClickFactory.setOnClickListener(this);
+        mClickProxy = (Button) findViewById(R.id.proxy_click);
+        mClickProxy.setOnClickListener(this);
+        mProxyClickDynamic = (Button) findViewById(R.id.dynamic_proxy_click);
+        mProxyClickDynamic.setOnClickListener(this);
+        mClickDecorator = (Button) findViewById(R.id.decorator_click);
+        mClickDecorator.setOnClickListener(this);
+        mClickResponsibility = (Button) findViewById(R.id.responsibility_click);
+        mClickResponsibility.setOnClickListener(this);
     }
 
     @Override
@@ -150,6 +192,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 shape.onDraw();
 
+                break;
+            case R.id.factory_click:// TODO 19/11/06
+                break;
+            case R.id.proxy_click:// TODO 19/11/06
+                break;
+            case R.id.dynamic_proxy_click:// TODO 19/11/06
+                break;
+            case R.id.decorator_click:// TODO 19/11/06
+                decorator();
+                break;
+            case R.id.responsibility_click:// TODO 19/11/06
+                testResponsibility();
                 break;
             default:
                 break;
