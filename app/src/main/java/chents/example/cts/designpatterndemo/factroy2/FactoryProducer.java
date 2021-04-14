@@ -1,5 +1,8 @@
 package chents.example.cts.designpatterndemo.factroy2;
 
+/**
+ * 工厂生产对象
+ */
 public class FactoryProducer {
 
     private static final String SHAPE ="shape";

@@ -1,9 +1,6 @@
 package chents.example.cts.designpatterndemo.factroy2;
 
 public class ShapeFactory extends AbstractFactory {
-
-
-
     @Override
     public Shape getShape(String type) {
         if (type.equals(Contant.CIRCLE)){
@@ -13,9 +10,7 @@ public class ShapeFactory extends AbstractFactory {
 
             return new Rectangle();
         }
-
         return null;
-
     }
 
     @Override
