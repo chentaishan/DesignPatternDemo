@@ -11,8 +11,10 @@ import chents.example.cts.designpatterndemo.adapter.SDcardImpl;
 import chents.example.cts.designpatterndemo.adapter.ThinkpadComputer;
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
+import chents.example.cts.designpatterndemo.clone.WordDocument;
 import chents.example.cts.designpatterndemo.decorator.Circle;
-import chents.example.cts.designpatterndemo.decorator.RedShapeDecorator;
+import chents.example.cts.designpatterndemo.decorator.ColorDecorator;
+import chents.example.cts.designpatterndemo.decorator.Red;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
 import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
@@ -23,8 +25,9 @@ import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
 import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
 import chents.example.cts.designpatterndemo.oberser.Cuihua;
-import chents.example.cts.designpatterndemo.proxy.ProxyObj;
-import chents.example.cts.designpatterndemo.proxy.RealObj;
+//import chents.example.cts.designpatterndemo.proxy.ProxyObj;
+//import chents.example.cts.designpatterndemo.proxy.RealObj;
+import chents.example.cts.designpatterndemo.proxy.Secretary;
 import chents.example.cts.designpatterndemo.responsibility.AndroidEr;
 import chents.example.cts.designpatterndemo.responsibility.Boss;
 import chents.example.cts.designpatterndemo.responsibility.Leader;
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mClickFactory;
     private Button mClickDecorator;
     private Button mClickResponsibility;
+    private Button mClickClone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +86,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void testProxy() {
-        final RealObj realObj = new RealObj();
+        chents.example.cts.designpatterndemo.proxy.Boss boss = new chents.example.cts.designpatterndemo.proxy.Boss();
 
-        final ProxyObj proxyObj = new ProxyObj(realObj);
+        final Secretary proxyObj = new Secretary(boss);
 
-        proxyObj.updateItem();
+        proxyObj.dispatchTask();
 
     }
 
@@ -111,10 +115,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void decorator() {
 
-        Circle circle = new Circle();
-        RedShapeDecorator redShapeDecorator = new RedShapeDecorator(circle);
-        redShapeDecorator.draw();
 
+        Circle circle = new Circle();
+        Red red = new Red(circle);
+        red.draw();
 
     }
 
@@ -178,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mClickDecorator.setOnClickListener(this);
         mClickResponsibility = (Button) findViewById(R.id.responsibility_click);
         mClickResponsibility.setOnClickListener(this);
+        mClickClone = (Button) findViewById(R.id.clone_click);
+        mClickClone.setOnClickListener(this);
     }
 
     @Override
@@ -205,6 +211,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.responsibility_click:// TODO 19/11/06
                 testResponsibility();
                 break;
+            case R.id.clone_click:// TODO 20/04/19
+                testClone();
+                break;
             default:
                 break;
             case R.id.single_click:
@@ -218,7 +227,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testBuilder();
                 break;
             case R.id.result:
+
+
                 break;
         }
+    }
+
+    private void testClone() {
+
+        WordDocument wordDocument = new WordDocument();
+
+        wordDocument.setmText("HHHHHHHHHHHHHHH");
+        wordDocument.setmImages("aa.jpg");
+        wordDocument.setmImages("bb.jpg");
+        wordDocument.setmImages("cc.jpg");
+
+        wordDocument.toString();
+
+        WordDocument document = wordDocument.clone();
+        document.setmText("UUUU");
+        document.setmImages("dd.jpg");
+        wordDocument.toString();
     }
 }

@@ -1,5 +1,9 @@
 package chents.example.cts.designpatterndemo.decorator;
 
-public interface Shape {
-    void draw();
+/**
+ *
+ */
+public abstract class Shape{
+
+    public abstract void draw();
 }
