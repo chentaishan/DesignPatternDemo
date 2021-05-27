@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import chents.example.cts.designpatterndemo.adapter.SDcardImpl;
 import chents.example.cts.designpatterndemo.adapter.ThinkpadComputer;
+import chents.example.cts.designpatterndemo.bridge.LargeCoffee;
+import chents.example.cts.designpatterndemo.bridge.Ordinary;
+import chents.example.cts.designpatterndemo.bridge.SmallCoffee;
+import chents.example.cts.designpatterndemo.bridge.Sugar;
 import chents.example.cts.designpatterndemo.builder.Computer;
 import chents.example.cts.designpatterndemo.builder.MacBook;
-import chents.example.cts.designpatterndemo.clone.WordDocument;
-import chents.example.cts.designpatterndemo.decorator.Circle;
-import chents.example.cts.designpatterndemo.decorator.ColorDecorator;
-import chents.example.cts.designpatterndemo.decorator.Red;
 import chents.example.cts.designpatterndemo.factroy2.AbstractFactory;
 import chents.example.cts.designpatterndemo.factroy2.Contant;
 import chents.example.cts.designpatterndemo.factroy2.FactoryProducer;
@@ -25,8 +25,6 @@ import chents.example.cts.designpatterndemo.instance.SingleTon3;
 import chents.example.cts.designpatterndemo.instance.SingleTon4;
 import chents.example.cts.designpatterndemo.instance.oberser.SingleMan;
 import chents.example.cts.designpatterndemo.oberser.Cuihua;
-//import chents.example.cts.designpatterndemo.proxy.ProxyObj;
-//import chents.example.cts.designpatterndemo.proxy.RealObj;
 import chents.example.cts.designpatterndemo.proxy.Secretary;
 import chents.example.cts.designpatterndemo.responsibility.AndroidEr;
 import chents.example.cts.designpatterndemo.responsibility.Boss;
@@ -34,6 +32,9 @@ import chents.example.cts.designpatterndemo.responsibility.Leader;
 import chents.example.cts.designpatterndemo.responsibility.Manager;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
+
+//import chents.example.cts.designpatterndemo.proxy.ProxyObj;
+//import chents.example.cts.designpatterndemo.proxy.RealObj;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,6 +62,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mClickDecorator;
     private Button mClickResponsibility;
     private Button mClickClone;
+    private Button mFactoryClick;
+    private Button mAbstactFactoryClick;
+    private Button mProxyClick;
+    private Button mDynamicProxyClick;
+    private Button mDecoratorClick;
+    private Button mResponsibilityClick;
+    private Button mCloneClick;
+    private Button mBridgeClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,6 +193,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mClickResponsibility.setOnClickListener(this);
         mClickClone = (Button) findViewById(R.id.clone_click);
         mClickClone.setOnClickListener(this);
+        mFactoryClick = (Button) findViewById(R.id.factory_click);
+        mAbstactFactoryClick = (Button) findViewById(R.id.abstact_factory_click);
+        mProxyClick = (Button) findViewById(R.id.proxy_click);
+        mDynamicProxyClick = (Button) findViewById(R.id.dynamic_proxy_click);
+        mDecoratorClick = (Button) findViewById(R.id.decorator_click);
+        mResponsibilityClick = (Button) findViewById(R.id.responsibility_click);
+        mCloneClick = (Button) findViewById(R.id.clone_click);
+        mBridgeClick = (Button) findViewById(R.id.bridge_click);
+        mBridgeClick.setOnClickListener(this);
     }
 
     @Override
@@ -212,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testResponsibility();
                 break;
             case R.id.clone_click:// TODO 20/04/19
-                testClone();
+//                testClone();
                 break;
             default:
                 break;
@@ -230,7 +248,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 break;
+
+            case R.id.bridge_click:
+                testBridge();
+
+                break;
         }
+    }
+
+    private void testBridge() {
+        Sugar sugar = new Sugar();
+
+        Ordinary ordinary = new Ordinary();
+
+        LargeCoffee largeCoffee = new LargeCoffee(sugar);
+
+        SmallCoffee smallCoffee = new SmallCoffee(ordinary);
+
+
+        largeCoffee.makeCoffee();
+        smallCoffee.makeCoffee();
+
+
+
+
     }
 
 //    private void testClone() {
