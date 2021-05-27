@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void decorator() {
 
 
-        Circle circle = new Circle();
-        Red red = new Red(circle);
-        red.draw();
+//        Circle circle = new Circle();
+//        Red red = new Red(circle);
+//        red.draw();
 
     }
 
@@ -233,20 +233,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void testClone() {
-
-        WordDocument wordDocument = new WordDocument();
-
-        wordDocument.setmText("HHHHHHHHHHHHHHH");
-        wordDocument.setmImages("aa.jpg");
-        wordDocument.setmImages("bb.jpg");
-        wordDocument.setmImages("cc.jpg");
-
-        wordDocument.toString();
-
-        WordDocument document = wordDocument.clone();
-        document.setmText("UUUU");
-        document.setmImages("dd.jpg");
-        wordDocument.toString();
-    }
+//    private void testClone() {
+//
+//        WordDocument wordDocument = new WordDocument();
+//
+//        wordDocument.setmText("HHHHHHHHHHHHHHH");
+//        wordDocument.setmImages("aa.jpg");
+//        wordDocument.setmImages("bb.jpg");
+//        wordDocument.setmImages("cc.jpg");
+//
+//        wordDocument.toString();
+//
+//        WordDocument document = wordDocument.clone();
+//        document.setmText("UUUU");
+//        document.setmImages("dd.jpg");
+//        wordDocument.toString();
+//    }
 }
