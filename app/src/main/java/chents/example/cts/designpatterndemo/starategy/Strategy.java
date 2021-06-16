@@ -1,5 +1,5 @@
 package chents.example.cts.designpatterndemo.starategy;
 
 public interface Strategy {
-    void dosomething();
+    int exec(int a,int b);
 }

@@ -2,10 +2,11 @@ package chents.example.cts.designpatterndemo.starategy;
 
 import android.util.Log;
 
-public class Two implements Strategy {
+public class Sub implements Strategy {
     @Override
-    public void dosomething() {
+    public int exec(int a ,int b) {
         Log.d(TAG, "dosomething: two");
+        return a-b;
     }
 
     private static final String TAG = "Two";
