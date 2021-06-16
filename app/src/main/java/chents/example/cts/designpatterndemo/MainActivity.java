@@ -30,6 +30,8 @@ import chents.example.cts.designpatterndemo.responsibility.AndroidEr;
 import chents.example.cts.designpatterndemo.responsibility.Boss;
 import chents.example.cts.designpatterndemo.responsibility.Leader;
 import chents.example.cts.designpatterndemo.responsibility.Manager;
+import chents.example.cts.designpatterndemo.starategy.Context;
+import chents.example.cts.designpatterndemo.starategy.One;
 import chents.example.cts.designpatterndemo.template.Cricket;
 import chents.example.cts.designpatterndemo.template.Game;
 
@@ -254,6 +256,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
         }
+    }
+
+    public void testStrategy(){
+
+        Context context  = new Context();
+        context.setStrategy(new One());
+        context.dosomething();
+
     }
 
     private void testBridge() {
